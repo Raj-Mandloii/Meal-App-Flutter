@@ -9,18 +9,27 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
-  const MealItem(
-      {
-        required this.id,
-        required this.title,
-      required this.imageurl,
-      required this.affordability,
-      required this.duration,
-      required this.complexity});
+  final Function removeItem;
+  const MealItem({
+    required this.id,
+    required this.title,
+    required this.imageurl,
+    required this.affordability,
+    required this.duration,
+    required this.complexity,
+    required this.removeItem,
+  });
+
   void selectMeal(context) {
-    Navigator.of(context).pushNamed('/meal_detail',
-    arguments: id
-    );
+    Navigator.of(context)
+        .pushNamed('/meal_detail', arguments: id)
+        .then((res) => {
+              // when the new page is popped then this future is executed.
+
+              if(res != null){
+                removeItem(res)
+              }
+            });
   }
 
   String get complexityText {

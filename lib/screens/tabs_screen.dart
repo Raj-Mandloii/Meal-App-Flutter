@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/widgets/main_drawer.dart';
 import '../screens/favourite_screen.dart';
 import '../screens/categories_screen.dart';
 
@@ -25,6 +26,14 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Daily Meals"),
+        elevation: 0,
+        
+      ),
+      drawer: const Drawer(
+        child: MainDrawer(),
+      ),
       // appBar: AppBar(
       //   title: const Text('Daily Meals'),
       // ),
