@@ -27,7 +27,7 @@ class _TabsScreenState extends State<TabsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Daily Meals"),
+        title: const Text("🧑‍🍳  Daily Meals  🧑‍🍳"),
         elevation: 0,
         
       ),
