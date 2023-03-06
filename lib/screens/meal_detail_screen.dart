@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
-  const MealDetailScreen({Key? key}) : super(key: key);
+  // const MealDetailScreen({Key? key}) : super(key: key);
+  final Function toggleFavourites;
+  final Function isMealFavorite;
+  MealDetailScreen(this.toggleFavourites, this.isMealFavorite);
 
   Widget buildSectionTitle(context, title) {
     return Container(
@@ -38,6 +41,11 @@ class MealDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(selectedMeal.title),
         elevation: 0,
+        actions: [
+          IconButton(
+              onPressed: () => toggleFavourites(mealId),
+              icon:  Icon(isMealFavorite(mealId) ? Icons.star : Icons.star_border))
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -89,7 +97,7 @@ class MealDetailScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
+        onPressed: () {
           Navigator.of(context).pop(mealId);
         },
         child: const Icon(Icons.delete),
